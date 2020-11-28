@@ -14,6 +14,8 @@ sourcecodes/src/js/geoJsonCircle.js
 sourcecodes/src/js/sketchjson.json
 sourcecodes/src/js/data.json
 
+templates/prod/
+
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
