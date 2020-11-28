@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spatial Analysis Results</title>
+    <style>
+        html {
+            background-color: #004466;
+        }
+        
+        body {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+            font-size: large;
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0;
+            border: 0;
+            color: #99ddff;
+            overflow-x: hidden;
+        }
+        
+        .primaryColor {
+            color: #00aaff;
+        }
+        
+        .brightPrimaryColor {
+            color: #99ddff;
+        }
+        
+        .darkPrimaryColor {
+            color: #004466;
+        }
+        
+        .blackColor {
+            color: black;
+        }
+        
+        .whiteColor {
+            color: white;
+        }
+        
+        #displayWeatherData {
+            width: 100%;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        #displayWeatherData .spatialResultDivStyle {
+            padding: 20px;
+            width: 100%;
+            margin: 20px auto;
+            font-size: large;
+            min-width: 800px;
+            max-width: 1000px;
+            height: auto;
+        }
+        
+        #displayWeatherData .spatialResultDivStyle ul {
+            -webkit-column-width: 240px;
+            column-width: 240px;
+            -webkit-column-gap: 20px;
+            column-gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="displayWeatherData">
+        <div class="spatialResultDivStyle">
+            <h1 class="whiteColor midBold centerText">Spatial Analytics</h1>
+            <h3 class="whiteColor">The circular area of 2KM radius displayed in the map:</h3>
+            <p>Intersects <span class="whiteColor">{{intersectingBuildings|length}} buidings in Johannesburg.</span></p>
+            <p>Intersects the land(s) used for these activites:</p>
+            <ul>
+                {% for intLanduse in intersectingLanduse %}
+                <li class="whiteColor">{{ intLanduse }}</li>{% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

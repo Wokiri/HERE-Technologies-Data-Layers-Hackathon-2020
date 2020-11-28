@@ -1,0 +1,262 @@
+#parametersSnackBar {
+  display: none;
+  background-color: rgba(0, 68, 102, 0.9);
+  position: fixed;
+  width: 75vw;
+  height: auto;
+  min-height: 75vh;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1;
+  color: white;
+  padding: 20px;
+  border: none;
+  margin: 0;
+  border-radius: 2vw;
+  font-size: 18px;
+}
+
+#parametersSnackBar form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#parametersSnackBar form select {
+  width: 50vw;
+  margin: 0 auto 12px;
+}
+
+.likeSnackBar {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  color: white;
+  padding: 20px;
+  font-size: 18px;
+}
+
+.likeSnackBar select {
+  width: 36vw;
+  margin: 0 250px;
+}
+
+.reveal {
+  -webkit-animation: fadein 0.5s ease-out 1;
+          animation: fadein 0.5s ease-out 1;
+}
+
+.conceal {
+  -webkit-animation: fadeout 0.75s ease-out 1;
+          animation: fadeout 0.75s ease-out 1;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    top: 125%;
+    opacity: 0;
+  }
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    top: 125%;
+    opacity: 0;
+  }
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    top: 50%;
+    opacity: 1;
+  }
+  to {
+    top: 125%;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    top: 50%;
+    opacity: 1;
+  }
+  to {
+    top: 125%;
+    opacity: 0;
+  }
+}
+
+#mainWrapper #projectImplementation {
+  background-image: url("../assets/map_bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-clip: padding-box;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 3vh 0;
+  color: #99ddff;
+  font-size: 2vw;
+}
+
+#mainWrapper #projectImplementation #mapsMainDiv {
+  font-family: 'FiraSans-Regular';
+  width: 100%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#mainWrapper #projectImplementation #mapsMainDiv #mapContainer_button {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#mainWrapper #projectImplementation #mapsMainDiv #mapContainer_button #mapContainer {
+  width: 100vw;
+  height: 100vh;
+  margin: 20px auto 0;
+}
+
+#mainWrapper #projectImplementation #mapsMainDiv #mapContainer_button #mapButtons {
+  position: relative;
+  left: 70px;
+  top: -60px;
+  margin: 0;
+  width: auto;
+  display: none;
+}
+
+#mainWrapper #projectImplementation #mapsMainDiv #mapContainer_button #mapButtons #clearMap,
+#mainWrapper #projectImplementation #mapsMainDiv #mapContainer_button #mapButtons #worldView {
+  background-color: rgba(153, 221, 255, 0.88);
+  color: #004466;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 1vw;
+  font-size: 0.6em;
+  z-index: 1;
+}
+
+#mainWrapper #projectImplementation #mapsMainDiv #mapContainer_button #mapButtons #clearMap:hover,
+#mainWrapper #projectImplementation #mapsMainDiv #mapContainer_button #mapButtons #worldView:hover {
+  color: white;
+  border: 1px solid #004466;
+  cursor: pointer;
+}
+
+#mainWrapper #projectImplementation #mapsMainDiv #displayWeatherData {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+#mainWrapper #projectImplementation #mapsMainDiv #displayWeatherData #weatherData {
+  padding: 25px;
+  margin: 0 auto;
+  font-size: large;
+  width: 100vw;
+  min-width: 800px;
+  max-width: 1280px;
+  min-height: 500px;
+  -webkit-column-width: 300px;
+          column-width: 300px;
+  -webkit-column-gap: 20px;
+          column-gap: 20px;
+}
+
+#mainWrapper #projectImplementation #mapsMainDiv #displayWeatherData #weatherData h1 {
+  font-size: x-large;
+  font-weight: 600;
+  margin: 5px auto 20px;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-column-span: all;
+          column-span: all;
+}
+
+.summaryDivStyle {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  padding: 15px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 99vw;
+  min-height: 120px;
+  color: white;
+  background-color: rgba(0, 68, 102, 0.8);
+  -webkit-column-count: 3;
+          column-count: 3;
+  -webkit-column-gap: 40px;
+          column-gap: 40px;
+  -webkit-column-rule: 2px solid #00aaff;
+          column-rule: 2px solid #00aaff;
+  font-family: 'FiraSans-Regular';
+  font-size: medium;
+}
+
+.summaryDivStyle h1 {
+  font-family: "PTSans-Regular";
+  font-size: larger;
+  font-weight: 600;
+  margin: 5px auto 20px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #99ddff;
+  -webkit-column-span: all;
+          column-span: all;
+}
+
+.summaryDivStyle a {
+  color: #99ddff;
+  text-align: center;
+  text-decoration: none;
+  font-family: "Montserrat-Regular";
+  font-weight: 500;
+}
+
+.summaryDivStyle a:hover {
+  text-decoration: none;
+  color: white;
+}

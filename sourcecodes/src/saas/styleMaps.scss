@@ -1,0 +1,194 @@
+@import 'variables';
+#parametersSnackBar {
+    display: none;
+    background-color: rgba(0, 68, 102, 0.9);
+    position: fixed;
+    width: 75vw;
+    height: auto;
+    min-height: 75vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+    color: $white;
+    padding: 20px;
+    border: none;
+    margin: 0;
+    border-radius: 2vw;
+    font-size: 18px;
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        select {
+            width: 50vw;
+            margin: 0 auto 12px;
+        }
+    }
+}
+
+.likeSnackBar {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    color: $white;
+    padding: 20px;
+    font-size: 18px;
+    select {
+        width: 36vw;
+        margin: 0 250px;
+    }
+}
+
+.reveal {
+    animation: fadein 0.5s ease-out 1;
+}
+
+.conceal {
+    animation: fadeout 0.75s ease-out 1;
+}
+
+@keyframes fadein {
+    from {
+        top: 125%;
+        opacity: 0;
+    }
+    to {
+        top: 50%;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        top: 50%;
+        opacity: 1;
+    }
+    to {
+        top: 125%;
+        opacity: 0;
+    }
+}
+
+#mainWrapper {
+    #projectImplementation {
+        background-image: url("../assets/map_bg.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+        background-clip: padding-box;
+        width: 100%;
+        margin: 0 auto;
+        min-height: 100vh;
+        padding: 3vh 0;
+        color: $brightPrimaryColor;
+        font-size: 2vw;
+        #mapsMainDiv {
+            font-family: 'FiraSans-Regular';
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            #mapContainer_button {
+                width: 100%;
+                margin: 0 auto;
+                #mapContainer {
+                    width: 100vw;
+                    height: 100vh;
+                    margin: 20px auto 0;
+                }
+                #mapButtons {
+                    position: relative;
+                    left: 70px;
+                    top: -60px;
+                    margin: 0;
+                    width: auto;
+                    display: none;
+                    #clearMap,
+                    #worldView {
+                        background-color: rgba(153, 221, 255, 0.88);
+                        color: $darkPrimaryColor;
+                        padding: 10px;
+                        border: 1px solid $white;
+                        border-radius: 1vw;
+                        font-size: 0.6em;
+                        z-index: 1;
+                        &:hover {
+                            color: $white;
+                            border: 1px solid $darkPrimaryColor;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+            #displayWeatherData {
+                width: 100%;
+                margin: 0 auto;
+                display: block;
+                #weatherData {
+                    padding: 25px;
+                    margin: 0 auto;
+                    font-size: large;
+                    width: 100vw;
+                    min-width: 800px;
+                    max-width: 1280px;
+                    min-height: 500px;
+                    column-width: 300px;
+                    column-gap: 20px;
+                    h1 {
+                        font-size: x-large;
+                        font-weight: 600;
+                        margin: 5px auto 20px;
+                        text-align: center;
+                        text-transform: uppercase;
+                        column-span: all;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.summaryDivStyle {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    padding: 15px;
+    transform: translateX(-50%);
+    width: 99vw;
+    min-height: 120px;
+    color: $white;
+    background-color: rgba(0, 68, 102, 0.8);
+    column-count: 3;
+    column-gap: 40px;
+    column-rule: 2px solid rgb(0, 170, 255);
+    font-family: 'FiraSans-Regular';
+    font-size: medium;
+    h1 {
+        font-family: $secondaryFont;
+        font-size: larger;
+        font-weight: 600;
+        margin: 5px auto 20px;
+        text-transform: uppercase;
+        text-align: center;
+        color: $brightPrimaryColor;
+        column-span: all;
+    }
+    a {
+        color: $brightPrimaryColor;
+        text-align: center;
+        text-decoration: none;
+        font-family: "Montserrat-Regular";
+        font-weight: 500;
+        &:hover {
+            text-decoration: none;
+            color: $white;
+        }
+    }
+}

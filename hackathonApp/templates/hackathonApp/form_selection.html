@@ -1,0 +1,11 @@
+<form>
+    <select style="width: 40vw;" id="townSelection" name="town" class="custom-select">
+        <option style="padding:15px 0" value="">Choose a city from this selection:</option>
+        {% for allTowns in majorCities|dictsort:"city_name" %}
+        <option value="{{allTowns.geom.json}}">
+            {{forloop.counter}}: &nbsp;&nbsp;{{ allTowns|upper }} &nbsp;&nbsp; {{allTowns.cntry_name}}
+        </option>
+        {% endfor %}
+    </select>
+    <label style="font-size:2vw" for="town">Choose a town from selection OR</label>
+</form>

@@ -1,0 +1,14 @@
+@import 'variables';
+#mainWrapper {
+    #hereAnimDiv {
+        background-color: $darkPrimaryColor;
+        width: 100%;
+        margin: 0 auto 20px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        text-align: center;
+        opacity: 1;
+    }
+}
