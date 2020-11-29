@@ -15,6 +15,9 @@ import os
 import django_heroku
 import dj_database_url
 
+DATABASE_URL = os.environ.get('DATABASE_URL')
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -93,18 +96,17 @@ WSGI_APPLICATION = 'herehacksproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-#         'NAME': os.environ.get('DB_NAME'),
-#         'USER': os.environ.get('DB_USER'),
-#         'PASSWORD': os.environ.get('DB_PASSWORD'),
-#         'HOST': os.environ.get('DB_HOST'),
-#         'PORT': os.environ.get('DB_PORT')
-#     }
-# }
-DATABASE_URL = os.environ.get('DATABASE_URL')
-DATABASES = {'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=600)}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT')
+    }
+}
+# DATABASES = {'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=600)}
 
 
 # Password validation
@@ -154,3 +156,4 @@ STATICFILES_DIRS = [
 
 django_heroku.settings(locals())
 
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
