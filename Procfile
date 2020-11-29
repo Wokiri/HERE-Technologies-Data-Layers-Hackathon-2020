@@ -1,1 +1,1 @@
-web:gunicorn herehacksproject.wsgi
+web: gunicorn herehacksproject.wsgi
