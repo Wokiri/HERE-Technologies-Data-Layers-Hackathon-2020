@@ -28,8 +28,8 @@ if os.name == 'nt':
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = '-=1p$$p+yyq-hs=!l9upp1ph8cf7+6_z5wr_j#ab1g=_1a!!-0'
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = '-=1p$$p+yyq-hs=!l9upp1ph8cf7+6_z5wr_j#ab1g=_1a!!-0'
+# SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -138,8 +138,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles/")
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 # static files (e.g. images, JavaScript, CSS).
