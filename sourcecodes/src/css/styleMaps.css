@@ -10,7 +10,7 @@
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   text-align: center;
-  z-index: 1;
+  z-index: 99;
   color: white;
   padding: 20px;
   border: none;
@@ -165,6 +165,7 @@
   margin: 0;
   width: auto;
   display: none;
+  z-index: 90;
 }
 
 #mainWrapper #projectImplementation #mapsMainDiv #mapContainer_button #mapButtons #clearMap,
@@ -259,4 +260,37 @@
 .summaryDivStyle a:hover {
   text-decoration: none;
   color: white;
+}
+
+@media (max-width: 768px) {
+  #parametersSnackBar {
+    width: 96%;
+    font-size: 16px;
+  }
+  #parametersSnackBar form select {
+    width: 88%;
+  }
+  #mainWrapper #projectImplementation {
+    font-size: 16px;
+  }
+  #mainWrapper #projectImplementation #mapsMainDiv #mapContainer_button {
+    width: 100%;
+    margin: 0 auto;
+  }
+  #mainWrapper #projectImplementation #mapsMainDiv #mapContainer_button #mapContainer {
+    width: 98%;
+    height: 98vh;
+  }
+  #mainWrapper #projectImplementation #mapsMainDiv #mapContainer_button #mapButtons #clearMap,
+  #mainWrapper #projectImplementation #mapsMainDiv #mapContainer_button #mapButtons #worldView {
+    font-size: 0.8em;
+  }
+  #mainWrapper #projectImplementation #mapsMainDiv #displayWeatherData #weatherData {
+    width: 100%;
+    min-width: 320px;
+    -webkit-column-width: 600px;
+            column-width: 600px;
+    -webkit-column-gap: 6px;
+            column-gap: 6px;
+  }
 }

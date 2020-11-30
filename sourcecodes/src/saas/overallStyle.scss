@@ -249,3 +249,29 @@ body {
         }
     }
 }
+
+@media (max-width: 768px) {
+    #mainWrapper {
+        #introDivInfo {
+            nav {
+                justify-content: center;
+                ul {
+                    padding: 0;
+                    margin: 0;
+                }
+            }
+        }
+        #projectConcept {
+            width: 100%;
+            padding: 0;
+            .sections {
+                width: 98%;
+                margin: 0 auto;
+                min-width: 320px;
+                min-height: 500px;
+                border-radius: 2vw;
+                padding: 20px 12px;
+            }
+        }
+    }
+}

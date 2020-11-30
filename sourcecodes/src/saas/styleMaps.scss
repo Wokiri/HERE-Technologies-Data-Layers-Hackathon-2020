@@ -10,7 +10,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    z-index: 1;
+    z-index: 99;
     color: $white;
     padding: 20px;
     border: none;
@@ -110,6 +110,7 @@
                     margin: 0;
                     width: auto;
                     display: none;
+                    z-index: 90;
                     #clearMap,
                     #worldView {
                         background-color: rgba(153, 221, 255, 0.88);
@@ -189,6 +190,47 @@
         &:hover {
             text-decoration: none;
             color: $white;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    #parametersSnackBar {
+        width: 96%;
+        font-size: 16px;
+        form {
+            select {
+                width: 88%;
+            }
+        }
+    }
+    #mainWrapper {
+        #projectImplementation {
+            font-size: 16px;
+            #mapsMainDiv {
+                #mapContainer_button {
+                    width: 100%;
+                    margin: 0 auto;
+                    #mapContainer {
+                        width: 98%;
+                        height: 98vh;
+                    }
+                    #mapButtons {
+                        #clearMap,
+                        #worldView {
+                            font-size: 0.8em;
+                        }
+                    }
+                }
+                #displayWeatherData {
+                    #weatherData {
+                        width: 100%;
+                        min-width: 320px;
+                        column-width: 600px;
+                        column-gap: 6px;
+                    }
+                }
+            }
         }
     }
 }
