@@ -18,8 +18,8 @@ else:
     quit()
     
 # Adds djangoStatic load
-if data.find('{% load static %}') == -1:
-    data = data.replace('<head>', '<head>{% load static %}')
+if data.find('{% load staticfiles %}') == -1:
+    data = data.replace('<head>', '<head>{% load staticfiles %}')
 
 
 # Adds djangoStatic load
@@ -40,10 +40,10 @@ def checkHTMLhref():
     hrefValStart = tempData[tempData.index(forLINKstart) + 6:]
     hrefVal = hrefValStart[:hrefValStart.index('"')]
     
-    if 'https' in hrefVal or 'mailto' in hrefVal or '{% static' in hrefVal or '#' in hrefVal:
+    if 'https' in hrefVal or 'mailto' in hrefVal or '{% staticfiles' in hrefVal or '#' in hrefVal:
         cssLink = hrefVal
     else:
-        cssLink = "{% static '" + hrefVal + "' %}"
+        cssLink = "{% staticfiles '" + hrefVal + "' %}"
     
     # Adjusts django hrefs reference
     data = data.replace(hrefVal, cssLink)
@@ -66,10 +66,10 @@ def checkHTMLsrc():
     srcStart = tempData2[tempData2.index(forSRCstart) + 5:]
     srcVal = srcStart[:srcStart.index('"')]
     
-    if 'https' in srcVal or '{% static' in srcVal:
+    if 'https' in srcVal or '{% staticfiles' in srcVal:
         src = srcVal
     else:
-        src = "{% static '" + srcVal + "' %}"
+        src = "{% staticfiles '" + srcVal + "' %}"
     
     # Adjusts django hrefs reference
     data2 = data2.replace(srcVal, src)
