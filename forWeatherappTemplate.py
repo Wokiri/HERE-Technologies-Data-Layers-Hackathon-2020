@@ -18,7 +18,7 @@ else:
     quit()
     
 # Adds djangoStatic load
-if data.find('{% load staticfiles %}') == -1:
+if data.find('{% load static %}') == -1:
     data = data.replace('<head>', '<head>{% load staticfiles %}')
 
 
