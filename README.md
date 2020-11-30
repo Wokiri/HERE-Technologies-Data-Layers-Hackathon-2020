@@ -119,10 +119,10 @@ The circle seen in the map is somehow replicated by a geojson information genera
    ## <p id="fifth">5. Statement Compliance to Hackathon Guidelines</p>
 
    I here acknowledge reading and understanding the [HERE HACHATHON RULES OF PARTICIPATION](https://herehackathon.devpost.com). I am pleased to affirm my absolute, unconditional compliance; and to the best of my knowledge:
-   - I have observed the dates and timings
-   - I am an eligible participant (on an individual basis)
-   - I have included a link to my solution code on GitHub
-   - I have created a video that includes footage clearly explaining my solution’s features and functionality
+   - I have observed the dates and timings,
+   - I am an eligible participant (on an individual basis),
+   - I have included a link to my solution code on GitHub,
+   - I have created a video that includes footage clearly explaining my solution’s features and functionality,
    - I have made my submissions in English language.
 
    These and any other applicable rules I have observed.
