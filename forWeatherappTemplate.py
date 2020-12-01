@@ -43,7 +43,7 @@ def checkHTMLhref():
     if 'https' in hrefVal or 'mailto' in hrefVal or '{% static' in hrefVal or '#' in hrefVal:
         cssLink = hrefVal
     else:
-        cssLink = "{% static '" + hrefVal + "' %}"
+        cssLink = "{% static hackathonApp/'" + hrefVal + "' %}"
     
     # Adjusts django hrefs reference
     data = data.replace(hrefVal, cssLink)
@@ -69,7 +69,7 @@ def checkHTMLsrc():
     if 'https' in srcVal or '{% static' in srcVal:
         src = srcVal
     else:
-        src = "{% static '" + srcVal + "' %}"
+        src = "{% static hackathonApp/'" + srcVal + "' %}"
     
     # Adjusts django hrefs reference
     data2 = data2.replace(srcVal, src)
