@@ -15,22 +15,15 @@ from .models import JburgBuildings
 # 4. All the 3 above in run function
 
 
-
 # Auto-generated `LayerMapping` dictionary for JburgBuildings model
 jburgbuildings_mapping = {
-    'id': 'id',
     'names': 'names',
-    'featuretype': 'featureType',
-    'buildingtype': 'buildingType',
-    'isocountrycode': 'isoCountryCode',
-    'here_xyz': '@ns:com:here:xyz',
-    'here_mom_meta': '@ns:com:here:mom:meta',
-    'footprints': 'footprints',
-    'geom': 'MULTIPOLYGON25D',
+    'geom': 'MULTIPOLYGON',
 }
 
+
 # worldborders_data = Path(__file__).resolve().parent / 'appassets' / 'WORLD_BORDERS' / 'TM_WORLD_BORDERS-0.3.shp'
-data = os.path.join(os.getcwd(), 'hackathonApp', 'appassets', 'JBurg_Buildings.geojson')
+data = os.path.join(os.getcwd(), 'hackathonApp', 'appassets', 'New_Buildings.geojson')
 
 
 def run(verbose = True):

@@ -35,9 +35,7 @@ def spatialResults_view(request, *args, **kwargrs):
     
     context = {
         'jburgBuildings' : JburgBuildings.objects.all(),
-        'jburgLanduse' : JburgLanduse.objects.all(),
         'circularArea' : circleData,
-        'intersectingBuildings': JburgBuildings.objects.filter(geom__intersects=circleData),
         'intersectingLanduse': JburgLanduse.objects.filter(geom__intersects=circleData)
     }
     
