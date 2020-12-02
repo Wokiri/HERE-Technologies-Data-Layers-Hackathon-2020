@@ -42,7 +42,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get('DEBUG_VALUE') == 'True'
 #DEBUG = True
 
-ALLOWED_HOSTS = ['herehackathonapp.herokuapp.com']
+ALLOWED_HOSTS = [*]
+
+# ALLOWED_HOSTS = ['herehackathonapp.herokuapp.com']
 
 
 # Application definition
