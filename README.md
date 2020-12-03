@@ -44,8 +44,8 @@ At the very minimum, a map is displayed and information fetched from Open Weathe
 
 According to the OpenWeather API documentation, a valid request to its servers must be in a particular format that includes, amongst other variables,
 - **lat** => A mandatory floating point numeric  value that represents the latitude of the place,
-- **lon** => A mandatory floating point numeric  value that represents the latitude of the place
-- **exclude** => An optional comma separated string values that instructs the time of the forecast needed.
+- **lon** => A mandatory floating point numeric  value that represents the latitude of the place,
+- **exclude** => An optional comma separated string values that instructs the time of the forecast needed,
 - **API key** => A mandatory alpha numeric string value that enables access to OpenWeather resources.
 
 An example of a valid request would be:
