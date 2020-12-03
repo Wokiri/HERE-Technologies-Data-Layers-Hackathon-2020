@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEMO</title>
+
+    <!-- HERE JS ADNs -->
+    <!-- JS API -->
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-data.js"></script>
+
+    <style>
+        * {
+            scroll-behavior: smooth;
+            box-sizing: border-box;
+        }
+        
+        body {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background-color: rgb(0, 68, 102);
+            overflow-x: hidden;
+        }
+        
+        #mapContainer {
+            width: 100vw;
+            height: 90vh;
+            margin: 0 auto 0;
+        }
+        
+        #theButton,
+        #demo {
+            font-size: x-large;
+            margin: 10px auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id='mapContainer'></div>
+    <!-- <p id="demo"></p>
+    <button id="theButton" type="button" class="btn btn-primary">Submit</button> -->
+
+    <script>
+        const mapContainer = document.getElementById('mapContainer')
+        const theButton = document.querySelector('#theButton')
+
+        let mapLat, mapLon
+
+        const platform = new H.service.Platform({
+            'apikey': 'WddRXCTipDvRJh8PEeifSR7fflB-igfe5kY9uzX_1bQ'
+        })
+
+        const defaultLayers = platform.createDefaultLayers();
+
+        const myMap = new H.Map(mapContainer, defaultLayers.vector.normal.map, {
+            zoom: 13.25,
+            center: {
+                lat: -1.3,
+                lng: 36.8
+            },
+            pixelRatio: window.devicePixelRatio || 1
+        })
+
+
+        const toDegree = rad => rad * 180 / Math.PI
+
+        const toRadian = deg => deg * Math.PI / 180
+
+        const km_Meters = distInKMs => distInKMs * 1000
+
+        const km_Miles = distInKMs => distInKMs * 0.62137
+
+        const meters_KMs = distInMeters => distInMeters / 1000
+
+        const meters_Miles = distInMeters => distInMeters / 1000 * 0.62137
+
+        const miles_KMs = distInMiles => distInMiles / 0.62137
+
+        const miles_Meters = distInMiles => distInMiles / 0.62137 * 1000
+
+        const roundoff = (num, dp) => Number(Math.round(num + 'e' + dp) + 'e-' + dp)
+
+        const a = 6378137.00
+
+        const geo_webMercator = (long, lat) => {
+
+            const longRads = toRadian(long)
+            const latRads = toRadian(lat)
+
+            const easting = a * longRads
+            const northing = a * Math.atanh(Math.sin(latRads))
+
+            return [easting, northing]
+        }
+
+        // The formulas used to derive ellipsoid Latitude and Longitude from the Spherical Web Mercator coordinates:
+        const weMercator_geo = (easting, northing) => {
+
+            const longRads = easting / a
+            const latRads = Math.tanh(Math.asin((northing / a)))
+
+            return [toDegree(longRads), toDegree(latRads)]
+        }
+
+
+        // This formula gives you the distance in meters for the radius
+        const Radial_Distance = (cent, angle) => {
+
+            const pointA = geo_webMercator(cent.lng, cent.lat)
+            const pointB = geo_webMercator(cent.lng + angle, cent.lat + angle)
+
+            const dx = Math.abs(pointA[0] - pointB[0])
+            const dy = Math.abs(pointA[1] - pointB[1])
+
+            return Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2))
+        }
+
+        // GeoJSON generator
+        const CircleGeoJson = cent => {
+
+            const segments = 360
+
+            const XOrigin = cent['lng']
+            const YOrigin = cent['lat']
+            const R = cent['radius']
+
+            const linear_Polar = () => {
+                const center = geo_webMercator(XOrigin, YOrigin)
+                const Ecent = center[0]
+                const Ncent = center[1]
+                const dxy = R * Math.sin(toRadian(45))
+                const Evertex = Ecent + dxy
+                const Nvertex = Ncent + dxy
+                const coordinates2 = weMercator_geo(Evertex, Nvertex)
+                const long2 = coordinates2[0]
+                const lat2 = coordinates2[1]
+                const dlong = Math.abs(XOrigin - long2)
+                const dlat = Math.abs(YOrigin - lat2)
+                return Math.sqrt(Math.pow(dlong, 2) + Math.pow(dlat, 2))
+            }
+
+            const Rm = linear_Polar()
+
+            let circularArea = {
+                type: "Polygon",
+                coordinates: [
+                    []
+                ]
+            }
+
+            let theCoordinates = circularArea['coordinates'][0]
+
+            for (let i = 0; i <= segments; i++) {
+
+                let xi, yi, dx, dy, degCent, degVert
+
+                degCent = i
+                degVert = 180 - (degCent + 90)
+
+                dx = Rm * Math.sin(toRadian(degCent))
+                dy = Rm * Math.sin(toRadian(degVert))
+
+                xi = XOrigin + dx
+                yi = YOrigin + dy
+
+                // Vertex Points coordinates Rounded off to 5 dp
+                theCoordinates[i] = [roundoff(xi, 5), roundoff(yi, 5)]
+
+            }
+
+            return JSON.stringify(circularArea, null)
+        }
+
+        const showAreaCoverage = () => {
+
+            const circularAreaStyle = {
+                fillColor: 'rgba(0, 68, 102, 0.5)',
+                strokeColor: 'rgb(0, 68, 102)',
+                lineWidth: 4
+            }
+
+            let areaCoverage = new H.map.Circle({
+                    lat: mapLat,
+                    lng: mapLon
+                },
+                2000, {
+                    style: circularAreaStyle
+                });
+
+            // Add the circle to the map:
+            myMap.addObject(areaCoverage)
+
+            // zoom map to circle
+            // get the shape's bounding box and adjust the camera position
+            myMap.getViewModel().setLookAtData({
+                zoom: 14,
+                bounds: areaCoverage.getBoundingBox()
+            });
+
+        }
+
+
+
+        const displayHEREData = (geoData, fillCol) => {
+
+            const geoJsonReader = new H.data.geojson.Reader(undefined, {
+                disableLegacyMode: true,
+
+                // This function is called each time parser detects a new map object
+                style: mapObject => {
+                    // Parsed geo objects could be styled using setStyle method
+                    if (mapObject instanceof H.map.Polygon) {
+                        mapObject.setStyle({
+                            fillColor: fillCol,
+                            strokeColor: 'rgb(0, 68, 102)',
+                            lineWidth: 4
+                        });
+                    }
+                }
+            })
+
+            // Start parsing the file
+            geoJsonReader.parseData(geoData)
+
+            // Add layer which shows GeoJSON data on the map
+            myMap.addLayer(geoJsonReader.getLayer())
+
+        }
+
+        myMap.addEventListener('tap', evt => {
+
+            let tapPosition = myMap.screenToGeo(
+                evt.currentPointer.viewportX,
+                evt.currentPointer.viewportY
+            )
+
+            mapLon = roundoff(tapPosition['lng'], 5)
+            mapLat = roundoff(tapPosition['lat'], 5)
+
+            let areaGeoJson = CircleGeoJson({
+                lng: mapLon,
+                lat: mapLat,
+                radius: 2000
+            })
+
+
+            setTimeout(() => {
+                showAreaCoverage()
+            }, 2000)
+
+
+            setTimeout(() => {
+                displayHEREData(areaGeoJson, 'rgba(255, 25, 25, 1)')
+            }, 4000)
+
+        })
+
+        const mapEvents = new H.mapevents.MapEvents(myMap)
+        const behavior = new H.mapevents.Behavior(mapEvents);
+        const ui = H.ui.UI.createDefault(myMap, defaultLayers)
+        window.addEventListener('resize', () => myMap.getViewPort().resize())
+        window.addEventListener('resize', () => myMap.getViewPort().resize())
+    </script>
+
+</body>
+
+</html>
+
+</html>
