@@ -1,7 +1,11 @@
 # <p align='center'>**HERE DATA HACKATHON 2020**</p>
 ## <p align='center'>**Weather Info App**</p>
 
-### Done and Submitted by: [@JWokiri](https://twitter.com/JWokiri).
+### Done and Submitted by: [@JWokiri](https://twitter.com/JWokiri). <br/>
+
+### [Youtube overview:](https://youtu.be/0ajBGAlPgsc) <br/>
+
+### [App link:](https://herehackathonapp.herokuapp.com/) <br/>
 ---
 <br/>
 
